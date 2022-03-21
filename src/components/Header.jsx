@@ -11,11 +11,11 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link as RouterLink} from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { CartState } from "../context/Context";
-
+import Link from "@mui/material/Link"
 // const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -46,14 +46,14 @@ const Header = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
+          <Link component={RouterLink} to="/" color="secondary"
             variant="h6"
             noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+            
+            sx={{ mr: 2, display: { xs: "none", md: "flex" }, textDecoration: "none" }}
           >
             PAP
-          </Typography>
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -111,14 +111,14 @@ const Header = () => {
               {/* ))} */}
             </Menu>
           </Box>
-          <Typography
+          <Link  component={RouterLink} to="/" color="secondary"
             variant="h6"
             noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+            
+            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, textDecoration: "none"}}
           >
             PAP
-          </Typography>
+          </Link>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button variant="text" component={NavLink} to="/" color="secondary">
               Home
@@ -141,7 +141,7 @@ const Header = () => {
             </Button>
           </Box>
 
-          <Button variant="contained">
+          <Button variant="contained" component={NavLink} to="/cart">
             <AddShoppingCartIcon />
             {cart.length}
           </Button>
