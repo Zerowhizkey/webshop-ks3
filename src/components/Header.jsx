@@ -13,6 +13,9 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { NavLink, Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { CartState } from "../context/Context";
+
 // const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -35,11 +38,16 @@ const Header = () => {
     setAnchorElUser(null);
   };
 
+  const {
+    state: { cart }
+  
+  } = CartState();
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
+          <Typography   
             variant="h6"
             noWrap
             component="div"
@@ -79,7 +87,7 @@ const Header = () => {
             >
               {/* {pages.map((page) => ( */}
               <MenuItem onClick={handleCloseNavMenu}>
-                <Grid
+                <Grid className="navbar-grid"
                   container
                   direction="column"
                   justifyContent="space-around"
@@ -113,7 +121,7 @@ const Header = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {/* {pages.map((page) => ( */}
-            <Button
+            <Button 
               // key={page}
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
@@ -140,7 +148,11 @@ const Header = () => {
             </Button>
             {/* ))} */}
           </Box>
-
+          
+          <Button variant="contained">
+            <AddShoppingCartIcon />{cart.length}
+          </Button>
+          
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

@@ -2,3 +2,8 @@
   margin: 0;
   padding: 0;
 }
+
+.navbar-grid {
+  gap: 10px;
+}
+
