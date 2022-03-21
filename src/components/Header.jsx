@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { NavLink, Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { CartState } from "../context/Context";
 
 // const pages = ["Products", "Pricing", "Blog"];
@@ -39,15 +39,14 @@ const Header = () => {
   };
 
   const {
-    state: { cart }
-  
+    state: { cart },
   } = CartState();
 
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography   
+          <Typography
             variant="h6"
             noWrap
             component="div"
@@ -87,13 +86,14 @@ const Header = () => {
             >
               {/* {pages.map((page) => ( */}
               <MenuItem onClick={handleCloseNavMenu}>
-                <Grid className="navbar-grid"
+                <Grid
+                  className="navbar-grid"
                   container
                   direction="column"
                   justifyContent="space-around"
                   alignItems="stretch"
                 >
-                  <Button variant="contained" component={NavLink} to="/" >
+                  <Button variant="contained" component={NavLink} to="/">
                     Home
                   </Button>
                   <Button
@@ -140,11 +140,12 @@ const Header = () => {
               Cart
             </Button>
           </Box>
-          
+
           <Button variant="contained">
-            <AddShoppingCartIcon />{cart.length}
+            <AddShoppingCartIcon />
+            {cart.length}
           </Button>
-          
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
